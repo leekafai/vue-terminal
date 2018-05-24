@@ -1,0 +1,152 @@
+input[type='text']{
+opacity:0;
+position:absolute;
+width:.1px;
+padding:0;
+margin:0;
+}
+body{
+  margin: 0;
+  background:rgba(37, 37, 37, 0.85);
+  font-family:'Consolas', Helvetica, Arial, sans-serif, monospace,'Segoe UI';
+
+}
+#commend{
+  width:100%;
+  float:left;
+  line-height: 30px;
+  min-height: 30px;
+   display: block;
+  & #vo{
+    width:100%;
+  }
+  & span{
+    float:left; 
+    &.content{
+      //  overflow: hidden;
+       letter-spacing: 2px;
+     
+    }
+   &.active{
+     &~.error{
+       content:'...';
+     background:#a71d5d!important;
+   }
+     &~.cursor{
+       min-width: 4px;
+       height: 20px;
+       position: relative;
+       background: #969896;
+       color: #002b36;
+       box-shadow: 0 0 5px #93a1a1;
+       text-align: center;
+        word-spacing: 3px;
+      animation: cursor .9s infinite linear;
+      line-height: 20px;
+      margin: 5px 2px;
+      display: block;
+
+  
+     }
+      
+   }
+   &.prompt{
+       
+       &:after{  
+       content:">";
+       color:tomato;
+       font-family: 'Consolas', monospace;
+       display: inline-block;
+       position: relative;
+       transform-origin: center;
+       animation-fill-mode: forwards;
+       transform: rotateZ(0deg)
+       }
+   }
+  }
+}
+
+.output_message{
+  width:100%;
+  float:left;
+  line-height: 30px;
+  min-height: 30px;
+}
+
+
+.output_skin{
+  position: relative;
+ .prompt,.content{
+   float:left;
+ }
+.prompt{
+      margin:0 3px;
+    &:after{  
+    content:"$";
+    }
+}
+ .content{
+    // overflow: hidden;
+    letter-spacing: 2px;
+        display: block;
+        animation: return .3s;
+        
+    // animation: insertani 2s steps(100, end);
+ }
+}
+#terminal{
+  
+    color: rgb(189, 227, 238);
+    min-height: 300px;
+        width: 50%;
+        min-width: 300px;
+        padding: 10px 0;
+        margin: 0 auto;
+    text-shadow: 0 0 5px #93a1a1;
+    & *::selection{
+      background:#49545f;
+      color:#a4a9ae;
+}
+}
+.cleaner{
+  clear:both;
+}
+.welcome{
+}
+.upcase{
+  text-transform: uppercase;
+}
+
+@keyframes cursor{
+  0%{opacity:1;}
+  50%{opacity:.5;}
+  100%{opacity:0;}
+  
+}
+@keyframes return{
+  0%{opacity:0;}
+  50%{opacity:.5;}
+  100%{opacity:1;}
+  
+}
+
+@keyframes insertani{
+//from { width: 0; }
+  0%{width:0;}
+   10%{width:15%;}
+    20%{width:25%;}
+     30%{width:35%;}
+      40%{width:45%;}
+       50%{width:55%;}
+ 60%{width:65%;}
+  //  70%{width:75%;} 
+  //  80%{width:85%;} 
+  //   90%{width:95%;} 
+   100%{width:80%;}
+}
+.cleaner{
+clear:both;
+}
+#hook-arguments-example{
+  height:200px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/test.css">
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/caret.js"></script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+
+
+</head>
+
+<body>
+    <label for="cmd">
+        <div id="terminal" v-on:keyup.space='focus'>
+
+            <div id="output">
+               
+                <div class="output_message" v-for="msg in output">
+                    <div class="output_skin">
+                    <a class="prompt" v-if="msg.prompt" v-text='msg.prompt+" "'>
+                    </a>
+                    <a class="content" v-bind:class="msg.class" v-html="msg.content.replace(/\s/g,'&nbsp;')"></a>
+                    <div class="cleaner"></div>
+                    </div>
+                   
+                </div>
+                
+                <div class="cleaner"></div>
+            </div>
+            <div id="commend" v-on:click="active=1" ref="commend">
+                    <input type="text" class="cmd" id="cmd" 
+                    v-model="content"
+                    v-on:keydown.left="arrow_l" 
+                    v-on:keydown.right="arrow_r"
+                    v-on:keyup.up='arrow_u'
+                    v-on:keyup.down='arrow_d' 
+                    v-on:keydown.delete="editvis" 
+                    v-on:keydown.esc='blur'
+                   
+                    v-on:keyup="keypress" 
+                    v-on:keypress.enter="submit" 
+                    v-on:blur='active=0'
+                    v-bind:disabled='!input_enable'
+                    v-focus=""/>
+                    <span class="prompt" ref="prompt">USER&nbsp;</span>
+                    <div  id="vo" v-bind:class="active?'active':''" v-if="content_n">
+                        <div v-for="item in content_n" style="    letter-spacing: 2px;overflow:hidden;">
+                            {{item}}
+                        </div>
+                    </div>
+                   <span class="content" v-bind:class="active?'active':''" v-if="" v-html="content_before" ref="ctx1"></span>
+                        <span v-bind:class="input_enable?'':'error'" class="cursor" v-html='cursor_text'  ref="cursor"></span>
+                        <span class="content" v-html="content_after" ref="ctx2"></span>
+                        <div class="cleaner"></div>
+            </div>
+            <div class="cleaner"></div>
+        </div>
+        </label>
+</body>
+<script src="js/app.js"></script>
+
+</html>
